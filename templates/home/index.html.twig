@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HOME{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+    <style>
+        .center-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-buttons a {
+            margin: 0 10px;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-buttons a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="home-container">
+            <!-- Left Sidebar -->
+            <div class="left-sidebar">
+                <ul>
+                    <li class="active"><h2><a href="{{ path('app_home') }}">Accueil</a></h2></li>
+                    <li><h2><a href="#">Explorer</a></h2></li>
+                    <li><h2>Notifications</h2></li>
+                    <li><h2>Messages</h2></li>
+                    <li><h2><a href="{{ path('main_profile') }}">Profil</a></h2></li>
+                </ul>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <!-- Tweet Input -->
+                <div class="tweet-input">
+                    <form id="tweetForm" action="{{ path('create_tweet') }}" method="post">
+                        <div>
+                            <h2 class="tweetTitle">Titre :</h2>
+                            <input type="text" name="tweet_title" id="tweetTitle" placeholder="Entrez le titre" required
+                                   maxlength="60">
+                        </div>
+
+                        <div>
+                            <h4 class="tweetContent">Message :</h4>
+                            <input name="tweet_content" id="tweetContent" placeholder="Ecrivez le message.." required
+                                   maxlength="512"></input>
+                        </div>
+
+                        <button type="submit" class="twitter-button">Tweeter</button>
+                    </form>
+                </div>
+                <div class="tweets">
+                    {% for tweet in last_tweets %}
+                        <div class="tweet">
+                            <li>
+                                <a href="{{ path('app_tweet', {id: tweet.id}) }}">{{ tweet.title }}</a>
+                                <p>Likes: {{ tweet.likes.count() }}</p>
+                                <p>Vues: {{ tweet.views.count() }}</p> {# Ajoutez cette ligne pour afficher le nombre de vues #}
+                                <small>({{ tweet.user.username }})</small>
+                            </li>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="right-sidebar">
+                <!-- Search Bar -->
+                <form action="{{ path('user_search') }}" method="get">
+                    <input type="text" name="q" placeholder="Rechercher des utilisateurs">
+                    <button type="submit" class="twitter-button">Rechercher</button>
+                </form>
+
+                <!-- Trending Topics -->
+                <div class="trending-topics">
+                    <h2>Tendances</h2>
+                    <!-- Liste des tendances -->
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="center-container">
+            <div>
+                <p>Veuillez vous connecter pour accéder à cette page.</p>
+                <div class="login-buttons">
+                    <a href="{{ path('app_login') }}">Connexion</a>
+                    <a href="{{ path('app_register') }}">Inscription</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% block javascripts %}
+        {{ parent() }}
+        <script>
+            // Votre script JavaScript ici
+        </script>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,82 @@
+/* Add this to your existing styles or create a new CSS file */
+
+body {
+    background-color: #f0f0f0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-details {
+    margin-top: 20px;
+}
+
+.profile-details p {
+    margin: 10px 0;
+}
+
+.button-container {
+    margin-top: 10px;
+}
+
+button {
+    background-color: #1da1f2;
+    color: #fff;
+    padding: 18px 20px;
+    border: none;
+    border-radius: 22px;
+    cursor: pointer;
+    font-size:20px;
+}
+
+button:hover {
+    background-color: #0d8ecf;
+}
+
+.tweets {
+    margin-top: 20px;
+}
+
+.tweet {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.tweet a {
+    color: #1da1f2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.tweet small {
+    color: #657786;
+    margin-left: 10px;
+}
+
+/* Adjustments for the title and container */
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+a{
+    text-decoration:none;
+    color: white;
+}
+.retour{
+    color: #1da1f2;
+}

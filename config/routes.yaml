@@ -1,0 +1,40 @@
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+
+
+user_search:
+    path: /search
+    controller: App\Controller\HomeController::searchUsers
+
+user_profile:
+    path: /user/{id}
+    controller: App\Controller\UserController::userProfile
+
+edit_profile:
+    path: /user/{id}/edit
+    controller: App\Controller\UserController::editProfile
+    methods: ['GET', 'POST']
+
+add_friend:
+    path: '/user/{id}/add-friend'
+    controller: 'App\Controller\UserController::addFriend'
+
+like_tweet:
+    path: '/tweet/{id}/like'
+    controller: 'App\Controller\TweetController::likeTweet'
+    requirements:
+        id: '\d+'
+
+unlike_tweet:
+    path: '/tweet/{id}/unlike'
+    controller: 'App\Controller\TweetController::unlikeTweet'
+    requirements:
+        id: '\d+'
+
+tweet_show:
+    path: '/tweet/{id}'
+    controller: 'App\Controller\YourControllerName::show'
+    requirements:
+        id: '\d+'
+

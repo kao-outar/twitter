@@ -1,0 +1,22 @@
+[1mdiff --git a/templates/home/index.html.twig b/templates/home/index.html.twig[m
+[1mindex 5c9f22e..07fbb81 100644[m
+[1m--- a/templates/home/index.html.twig[m
+[1m+++ b/templates/home/index.html.twig[m
+[36m@@ -64,7 +64,7 @@[m
+                             <input name="tweet_content" id="tweetContent" placeholder="Entrez le contenu" required maxlength="512" ></input>[m
+                         </div>[m
+ [m
+[31m-                        <button type="submit">Tweeter</button>[m
+[32m+[m[32m                        <button type="submit" class="twitter-button">Tweeter</button>[m
+                     </form>[m
+                 </div>[m
+ [m
+[36m@@ -83,7 +83,7 @@[m
+                 <!-- Search Bar -->[m
+                 <form action="{{ path('user_search') }}" method="get">[m
+                     <input type="text" name="q" placeholder="Rechercher des utilisateurs">[m
+[31m-                    <button type="submit">Rechercher</button>[m
+[32m+[m[32m                    <button type="submit" class="twitter-button">Rechercher</button>[m
+                 </form>[m
+ [m
+                 <!-- Trending Topics -->[m

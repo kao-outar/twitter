@@ -1,0 +1,14 @@
+{# templates/user/profile.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+
+    <a href="{{ path('edit_profile', {'id': user.id}) }}">Modifier le profil</a>
+    <a href="{{ path('app_logout') }}">Logout</a>
+    <h1>{{ user.username }}</h1>
+    <p>Email: {{ user.email }}</p>
+
+{% endblock %}

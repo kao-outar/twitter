@@ -1,0 +1,49 @@
+{# templates/user/profile.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/profile.css') }}">
+    <style>
+        
+    </style>
+{% endblock %}
+{% block body %}
+    <div>
+        {% if app.user and app.user.id != user.id %}
+            {% if app.user.isFriendWith(user) %}
+                <button><a href="{{ path('toggle_friend', {'id': user.id}) }}">Ne plus suivre</a></button>
+            {% else %}
+                <button><a href="{{ path('toggle_friend', {'id': user.id}) }}">Ajouter comme ami</a></button>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <div class="profile-container">
+        <h1>Profil de {{ user.username }}</h1>
+
+        {% if app.user and app.user.id == user.id %}
+            <button class="twitter-button"><a href="{{ path('edit_profile', {'id': user.id}) }}">Modifier le profil</a></button>
+            <button class="twitter-button"><a href="{{ path('app_logout') }}">Logout</a></button>
+        {% endif %}
+
+
+        <div class="profile-details">
+            <p><strong>Nom d'utilisateur:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            {# Ajoutez d'autres champs de profil ici en fonction de votre modèle User #}
+        </div>
+        {#Afficher les tweets#}
+        <h2>Mes Tweets</h2>
+        <div class="tweets">
+            {% for tweet in user.tweets %}
+                <div class="tweet">
+                    <a href="{{ path('app_tweet', {id: tweet.id}) }}">{{ tweet.title }}</a> <small>({{ tweet.user.username }})</small>
+                </div>
+            {% endfor %}
+        </div>
+        <a href="{{ path('app_home') }}" class="retour">Retourner à l'accueil</a>
+    </div>
+{% endblock %}

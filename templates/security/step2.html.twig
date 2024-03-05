@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registration - Step Two{% endblock %}
+
+{% block body %}
+    <h1>Registration - Step Two</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.username) }}
+
+        <button type="submit">Complete Registration</button>
+    {{ form_end(form) }}
+{% endblock %}

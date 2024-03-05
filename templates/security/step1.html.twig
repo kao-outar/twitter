@@ -1,0 +1,18 @@
+{# templates/registration/step1.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Step 1 - Registration{% endblock %}
+
+{% block body %}
+    <h1>Step 1 - Registration</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.password) }}
+    {{ form_row(form.agreeTerms) }}
+
+
+    <button type="submit">Next</button>
+    {{ form_end(form) }}
+{% endblock %}

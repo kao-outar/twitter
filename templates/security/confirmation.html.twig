@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registration Confirmation{% endblock %}
+
+{% block body %}
+    <h1>Registration Confirmation</h1>
+
+    <p>You will be redirected in a few seconds...</p>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        setTimeout(function() {
+            window.location.href = "{{ path('app_home') }}";
+        }, 5000);
+    </script>
+{% endblock %}

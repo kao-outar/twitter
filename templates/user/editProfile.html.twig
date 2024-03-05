@@ -1,0 +1,19 @@
+{# templates/editProfile.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le Profil{% endblock %}
+
+{% block body %}
+    <h1>Modifier le Profil</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.username) }}
+    {{ form_row(form.email) }}
+
+    <button type="submit">Enregistrer</button>
+    <button>Retour</button>
+
+    {{ form_end(form) }}
+{% endblock %}

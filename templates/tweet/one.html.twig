@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ tweet.title }}{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/tweet.css') }}">
+    <style>
+        
+    </style>
+{% endblock %}
+
+{% block body %}
+    {% if tweet is defined %}
+        <h1>{{ tweet.title }}</h1>
+        <p>
+            {{ tweet.message }}
+        </p>
+        <p>Likes: {{ tweet.likes.count() }}</p>
+
+        {% if app.user and not tweet.isLikedBy(app.user) %}
+            <form method="post" action="{{ path('like_tweet', {'id': tweet.id}) }}">
+                <button type="submit">Like</button>
+            </form>
+        {% endif %}
+
+        {% if tweet.isLikedBy(app.user) %}
+            <form method="post" action="{{ path('unlike_tweet', {'id': tweet.id}) }}">
+                <button type="submit">Unlike</button>
+            </form>
+        {% endif %}
+
+        Publié par {{ tweet.user.username }}
+    {% else %}
+        <p>Le tweet n'existe pas.</p>
+    {% endif %}
+    <a href="{{ path('app_home') }}">Retourner à l'accueil</a>
+{% endblock %}
+
